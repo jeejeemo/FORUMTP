@@ -19,9 +19,9 @@ $page = getPage();
         include("views/connexion.php");
         break;
 
-    //   case 'wall':
-    //     $user = getUser();
-    //     $description = getDescription();
-    //     include("views/wall.php");
-    //     break;
+      case 'inscription':
+        // $user = getUser();
+        // $description = getDescription();
+        include("views/inscription.php");
+        break;
  }
