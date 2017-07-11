@@ -24,4 +24,8 @@ $page = getPage();
         // $description = getDescription();
         include("views/inscription.php");
         break;
+      
+      case 'debut':
+      include("views/debut.php");
+      break;
  }

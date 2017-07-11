@@ -31,11 +31,11 @@ function verifPseudo($pseudo){
    return $utilisateur;
 }
 
-function verifPseudo($pseudo){
+function verifEmail($email){
     $connexion=connexion();
-    $pdo=$connexion->prepare('SELECT * FROM utilisateur WHERE pseudo=:utpseudo');
+    $pdo=$connexion->prepare('SELECT * FROM utilisateur WHERE email=:email');
     $pdo->execute(array(
-    'utpseudo'=>$pseudo
+    'email'=>$email
     ));
    $utilisateur = $pdo->fetchAll(PDO::FETCH_ASSOC);
    return $utilisateur;
@@ -52,9 +52,16 @@ function inscription($pseudo,$email,$password){
  $result = $pdo->rowCount();
   return $result;
 }
-
-
-
+function verifLogin($password,$pseudo){
+    $connexion=connexion();
+    $pdo=$connexion->prepare('SELECT * FROM utilisateur WHERE uPassword=:password AND pseudo=:pseudo');
+    $pdo->execute(array(
+    'password'=>$password,
+    'pseudo'=>$pseudo
+    ));
+   $utilisateur = $pdo->fetchAll(PDO::FETCH_ASSOC);
+   return $utilisateur;
+}
 ?>  
 
 
