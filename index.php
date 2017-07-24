@@ -25,7 +25,9 @@ $page = getPage();
         include("views/inscription.php");
         break;
       
-      case 'debut':
-      include("views/debut.php");
+      case 'post':
+      include("views/post.php");
       break;
+
+      
  }
