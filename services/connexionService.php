@@ -17,7 +17,7 @@ if(isset($_POST['pseudo']) && isset($_POST['password'])){
         
         else{
             $_SESSION["user"]=$login;
-            header("location: ../index.php?page=debut");
+            header("location: ../index.php?page=post");
            
         }
 

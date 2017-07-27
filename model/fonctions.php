@@ -16,34 +16,34 @@ function getPage(){
 }
 function connexion(){
 
-    $connexion = new PDO('mysql:host=localhost;dbname=tpmyforum;charset=UTF8','root','');
+    $connexion = new PDO('mysql:host=localhost;dbname=myforum;charset=UTF8','root','');
     $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $connexion -> setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     return $connexion;
 }
 function verifPseudo($pseudo){
     $connexion=connexion();
-    $pdo=$connexion->prepare('SELECT * FROM utilisateur WHERE pseudo=:utpseudo');
+    $pdo=$connexion->prepare('SELECT * FROM user WHERE pseudo=:utpseudo');
     $pdo->execute(array(
     'utpseudo'=>$pseudo
     ));
-   $utilisateur = $pdo->fetchAll(PDO::FETCH_ASSOC);
-   return $utilisateur;
+   $user = $pdo->fetchAll(PDO::FETCH_ASSOC);
+   return $user;
 }
 
 function verifEmail($email){
     $connexion=connexion();
-    $pdo=$connexion->prepare('SELECT * FROM utilisateur WHERE email=:email');
+    $pdo=$connexion->prepare('SELECT * FROM user WHERE email=:email');
     $pdo->execute(array(
     'email'=>$email
     ));
-   $utilisateur = $pdo->fetchAll(PDO::FETCH_ASSOC);
-   return $utilisateur;
+   $user = $pdo->fetchAll(PDO::FETCH_ASSOC);
+   return $user;
 }
 
 function inscription($pseudo,$email,$password){
     $connexion=connexion();
-    $pdo = $connexion->prepare('INSERT INTO utilisateur SET pseudo=:moi, email=:email, uPassword=:password ');
+    $pdo = $connexion->prepare('INSERT INTO user SET pseudo=:moi, email=:email, uPassword=:password ');
  $pdo->execute(array(
    'moi'=>$pseudo,
    'email' => $email,
@@ -54,14 +54,33 @@ function inscription($pseudo,$email,$password){
 }
 function verifLogin($password,$pseudo){
     $connexion=connexion();
-    $pdo=$connexion->prepare('SELECT * FROM utilisateur WHERE uPassword=:password AND pseudo=:pseudo');
+    $pdo=$connexion->prepare('SELECT * FROM user WHERE uPassword=:password AND pseudo=:pseudo');
     $pdo->execute(array(
     'password'=>$password,
     'pseudo'=>$pseudo
     ));
-   $utilisateur = $pdo->fetchAll(PDO::FETCH_ASSOC);
-   return $utilisateur;
+   $user = $pdo->fetchAll(PDO::FETCH_ASSOC);
+   return $user;
 }
+function setNewPost($category,$sujet,$post,$userid){
+    $connexion = connexion();
+    $pdo = $connexion->prepare('INSERT INTO post SET date_post=NOW(),category_id=:category_id, sujet=:sujet, post=:post,poster_id=:poster_id');
+    $pdo -> execute (array(
+      'category_id'=>$category,
+      'sujet'=> $sujet,
+      'post'=>$post,
+      'poster_id'=>$userid
+    )); 
+  $result = $pdo->rowCount();
+  return $result;
+}
+
+
+
+
+
+
+
 ?>  
 
 
