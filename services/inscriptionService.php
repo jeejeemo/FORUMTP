@@ -14,7 +14,14 @@ if(isset($_POST['pseudo']) && isset($_POST['email']) && isset($_POST['password']
     $verifEmail=verifEmail($email);
                     
     // var_dump(empty($verifPseudo));
-    // var_dump($verifPseudo);               
+    // var_dump($verifPseudo);
+
+    /**
+     * Il faut rapporter peut être ces erreurs à l'utilisateur
+     * au lieu d'avoir ces echo. Il faudrait avoir un header('location: index.php?page=signup&error=1');
+     * ou un quelque chose comme ça. Comme tu as fait pour la connexion.
+     */
+
         if(!empty($verifPseudo)){
             $erreur = "Ce nom d'utilisateur est déjà utilisé.";
             echo $erreur;

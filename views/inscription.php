@@ -1,7 +1,11 @@
 <?php
 session_start();
 
-
+/**
+ * Alfonso: Pas de session start ici.
+ * Dans notre système actuel soit on le fait dans le contrôleur soit dans les service
+ * jamais dans les templates.
+ */
 
 
 

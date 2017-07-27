@@ -24,7 +24,12 @@
     <p><input type="submit" value="Envoyer" action="" method="services/new_post.php"/></p>
 
     <?php
-
+    /**
+     * Alfonso: essaie d'utiliser les tag php que j'utilise dans mon exemple
+     * plutôt que les accolades
+     * exemple: <?php if(empty($_GET['mess']): ?>
+     *          <?php endif; ?>
+     */
         if (!empty($_GET['mess']))
 {
     echo "<h2>votre post a été remis</h2>";
