@@ -18,6 +18,7 @@
 	<a href="index.php?page=inscription">inscription</a>
 	<br>
 	<a href="index.php?page=deconnexion">deconnexion</a>
+	
 
 </body>
 </html>

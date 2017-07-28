@@ -19,25 +19,35 @@
     <option value ="3">Informatique
     <option value ="4">Maison
     </select><br>
-    <textarea name="sujet" rows="1" cols="45">Sujet</textarea><br>
-    <textarea name="post" rows="8" cols="45">Votre message ici.</textarea></br>
-    <p><input type="submit" value="Envoyer" action="" method="services/new_post.php"/></p>
+    <textarea name="sujet" rows="1" cols="45"></textarea><br>
+    <textarea name="post" rows="8" cols="45"></textarea></br></form>
+    <p><input type="submit" value="Envoyer" action="" method="services/new_post.php"/></p> <br>
+    
 
     <?php
-    /**
-     * Alfonso: essaie d'utiliser les tag php que j'utilise dans mon exemple
-     * plutôt que les accolades
-     * exemple: <?php if(empty($_GET['mess']): ?>
-     *          <?php endif; ?>
-     */
-        if (!empty($_GET['mess']))
-{
-    echo "<h2>votre post a été remis</h2>";
-}
-        if(!empty($_GET['error']))
-{
-    echo "<h2>votre post n'a pas été remis</h2>";
+        var_dump($post_cat);
+    //die();
 
-}
-        ?>
-</html>
+        if (!empty($_GET['mess'])): ?>
+        <h2>Votre post a bien été remis</h2>
+        <?php endif; ?>
+
+    <?php    
+        if(!empty($_GET['error'])): ?>
+        <h2>votre post n'a pas été remis</h2>
+        <?php endif; ?>
+
+    <h1> LISTE DES POSTS </h1>
+        <?php 
+        
+        foreach($post_cat as $post_cat) {?>
+            <td><?=$post_cat['category'];?></td><td><?=$post_cat['sujet'];?></td>
+            
+            
+        
+        <?php }; ?>
+            
+   
+              
+
+</html> 

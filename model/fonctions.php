@@ -75,12 +75,21 @@ function setNewPost($category,$sujet,$post,$userid){
   return $result;
 }
 
-
-
-
-
-
-
-?>  
-
+function getPostByCateg($sujet){
+    $connexion = connexion();
+    $query = 'SELECT c.category,p.sujet FROM post AS p 
+    RIGHT JOIN category AS c ON p.category_id = c.id where p.id = (SELECT id FROM post where sujet = :nom_sujet)';
+    $pdo = $connexion->prepare($query);
+    $pdo->execute(array(
+      'nom_sujet'=>$sujet,
+    ));
+   return $pdo->fetchAll(PDO::FETCH_ASSOC);
+}
+function getFeedback(){
+  $control = false;
+  if(isset($_GET['erreur'])){
+    $control = $_GET['erreur'];
+  }
+  return $control;
+}
 

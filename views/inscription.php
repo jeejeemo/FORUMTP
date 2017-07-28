@@ -1,18 +1,3 @@
-<?php
-session_start();
-
-/**
- * Alfonso: Pas de session start ici.
- * Dans notre système actuel soit on le fait dans le contrôleur soit dans les service
- * jamais dans les templates.
- */
-
-
-
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,6 +20,18 @@ session_start();
 	<p>Les champs précédés d un * sont obligatoires</p>
 	<p><input type="submit" value="S'inscrire" action="./services/inscriptionService.php" method="post"/></p></form>
         </div>
+    <?php        
+    if(!empty($_get['mess'])): ?>
+    <h2> "Ce nom d'utilisateur est déjà utilisé."</h2>
+    <?php endif; ?>
+    <?php
+    if(!empty($_GET['error'])): ?>
+    <h2>"Cette adresse de email est déjà utilisée."</h2>
+    <?php endif; ?>
+    <?php
+    if(!empty($_GET['success'])): ?>
+    <h2>"Vous avez bien été enregistré"</h2>
+    <?php endif; ?>
 </body>
 </html>
     

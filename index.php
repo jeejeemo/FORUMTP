@@ -32,6 +32,10 @@ $page = getPage();
         //1) dans un premier temps avoir nos données
         //2) remplir notre template avec ces données
         // 2) on complete le template avec nos variables
+
+        
+        
+
         include("views/connexion.php");
         break;
 
@@ -42,8 +46,18 @@ $page = getPage();
         break;
       
       case 'post':
-      include("views/post.php");
+        $sujet = "Couleur Moto";
+        $post_cat = getPostByCateg($sujet);
+        
+        include("views/post.php");
+      break;
+      
+      case 'acceuil':
+        include("views/acceuil.php");
       break;
 
+      case 'viewpost':
+        include("views/viewPost.php");
+      break;
       
  }
